@@ -562,6 +562,22 @@ body {
   }
 }
 
+.technology {
+  background-image: url(./assets/technology/background-technology-mobile.jpg);
+}
+
+@media (min-width: 35rem) {
+  .technology {
+    background-image: url(./assets/technology/background-technology-tablet.jpg);
+  }
+}
+
+@media (min-width: 45rem) {
+  .technology {
+    background-image: url(./assets/technology/background-technology-desktop.jpg);
+  }
+}
+
 /* Layout */
 
 .grid-container {
@@ -645,11 +661,61 @@ body {
   color: hsl(var(--clr-white) / 0.25);
 }
 
+/* technology layout */
+
+.grid-container--technology {
+  --flow-space: 3rem;
+  grid-template-areas:
+    "title"
+    "image"
+    "numbers"
+    "techInfo";
+}
+
+.grid-container--technology > .number-indicators {
+  grid-area: numbers;
+}
+
+.grid-container--technology > picture {
+  grid-area: image;
+}
+
+.grid-container--technology > .tech-details {
+  grid-area: techInfo;
+}
+
+.grid-container.grid-container--technology {
+  padding-inline: 0;
+}
+
+.number-indicators button:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.tech-details {
+  padding-inline: 1rem;
+}
+
+@media (max-width: 44.999em) {
+  .st {
+    margin-top: 1.5rem;
+  }
+}
+
 @media (min-width: 35em) {
   .numbered-title {
     justify-self: start;
     margin-top: 2rem;
   }
+
+  .grid-container--technology > .numbered-title {
+    padding-inline: 2rem;
+  }
+
+  .tech-details {
+    max-width: 60ch;
+  }
+
   .destination-meta {
     flex-direction: row;
     justify-content: space-evenly;
@@ -721,5 +787,29 @@ body {
     grid-column: span 2;
     align-self: end;
     max-width: 70%;
+  }
+
+  .grid-container--technology {
+    grid-template-columns: minmax(1rem, 1fr) minmax(0, 12rem) minmax(0, 45rem) minmax(
+        0,
+        40rem
+      );
+    grid-template-areas:
+      " . title title ."
+      " . numbers techInfo  image"
+      " . numbers techInfo  image";
+  }
+
+  .grid-container--technology .number-indicators {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .number-indicators button:not(:last-child) {
+    margin: 0 0 1rem 0;
+  }
+
+  .st {
+    font-size: 3rem;
   }
 }
